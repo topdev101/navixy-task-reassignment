@@ -18,7 +18,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import IconButton from "@mui/material/IconButton";
-import backgroundImage from "./images/background1.jpeg"; // Update the path as needed
+import backgroundImage from "./images/background1.jpeg";
 
 const sessionKey = "086b95ce2cc44d501f971734d9373758"; // Demo session key
 
