@@ -150,6 +150,8 @@ const App = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
 
+  const backgroundImageUrl = `${backgroundImage}?v=1`;
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -160,7 +162,7 @@ const App = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
