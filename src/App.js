@@ -20,7 +20,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import IconButton from "@mui/material/IconButton";
 import backgroundImage from "./images/background1.jpeg";
 
-const sessionKey = "086b95ce2cc44d501f971734d9373758"; // Demo session key
+const sessionKey = "f54489452479d073f2367834146b71da"; // Demo session key
 
 const App = () => {
   const [dock, setDock] = useState("");
