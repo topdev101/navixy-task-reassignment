@@ -80,11 +80,38 @@ const App = () => {
       return;
     }
 
+    function formatDateToString(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const seconds = String(date.getSeconds()).padStart(2, "0");
+
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+
+    // Get the current date and time
+    const now = new Date();
+    const todayDate = formatDateToString(now);
+
     setIsLoading(true);
     try {
       // Step 1: List all tasks
       const tasksResponse = await fetch(
-        `https://api.navixy.com/v2/task/route/list?hash=${sessionKey}`
+        "https://api.navixy.com/v2/task/route/list",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            hash: sessionKey,
+            trackers: [3123578],
+            from: todayDate,
+            statuses: ["assigned"],
+          }),
+        }
       );
       const tasksData = await tasksResponse.json();
       console.log("Tasks data:", tasksData);
@@ -95,7 +122,7 @@ const App = () => {
       }
 
       // Find the task that includes the selected dock in its name
-      const matchingTask = tasksData.list.find((task) =>
+      const matchingTask = tasksData.list.filter((task) =>
         task.label.includes(`${dock}`)
       );
 
