@@ -122,7 +122,7 @@ const App = () => {
       }
 
       // Find the task that includes the selected dock in its name
-      const matchingTask = tasksData.list.filter((task) =>
+      const matchingTask = tasksData.list.find((task) =>
         task.label.includes(`${dock}`)
       );
 
